@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, flash, request, jsonify
 import os
 
 # Initialise Flask app
@@ -11,13 +11,21 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 @app.route('/upload-stolen-files', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
+    # Check if POST request has the file part
+    if 'files[]' not in request.files:
+        flash('No file part')
         return jsonify({'error': 'No file part'}), 400
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-    file.save(os.path.join(UPLOAD_FOLDER, file.filename))
-    return jsonify({'success': 'File uploaded successfully'}), 200
+    
+    files = request.files.getlist['files[]']
+    if not files:
+        flash('No selected files')
+        return jsonify({'error': 'No selected files (n)'}), 400
+
+    for file in files:
+        if file.filename == '':
+            return jsonify({'error': 'No selected file (1)'}), 400
+        file.save(os.path.join(UPLOAD_FOLDER, file.filename))
+    return jsonify({'success': 'Files uploaded successfully'}), 200
 
 if __name__ == '__main__':
     # Debugging
