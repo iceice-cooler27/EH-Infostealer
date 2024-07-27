@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe  @CMakeFiles/Special.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Special.dir\\src\\main.cpp.obj -c C:\\VSCode\\Eh-Infostealer\\Infostealer-Shellcode\\src\\main.cpp",
+  "file": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/src/main.cpp",
+  "output": "CMakeFiles/Special.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe  @CMakeFiles/Special.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Special.dir\\src\\get-directory.cpp.obj -c C:\\VSCode\\Eh-Infostealer\\Infostealer-Shellcode\\src\\get-directory.cpp",
+  "file": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/src/get-directory.cpp",
+  "output": "CMakeFiles/Special.dir/src/get-directory.cpp.obj"
+},
+{
+  "directory": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe  @CMakeFiles/Special.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Special.dir\\src\\copy-upload.cpp.obj -c C:\\VSCode\\Eh-Infostealer\\Infostealer-Shellcode\\src\\copy-upload.cpp",
+  "file": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/src/copy-upload.cpp",
+  "output": "CMakeFiles/Special.dir/src/copy-upload.cpp.obj"
+},
+{
+  "directory": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe  @CMakeFiles/Special.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Special.dir\\src\\connection.cpp.obj -c C:\\VSCode\\Eh-Infostealer\\Infostealer-Shellcode\\src\\connection.cpp",
+  "file": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/src/connection.cpp",
+  "output": "CMakeFiles/Special.dir/src/connection.cpp.obj"
+},
+{
+  "directory": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe  @CMakeFiles/Special.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Special.dir\\src\\curl.cpp.obj -c C:\\VSCode\\Eh-Infostealer\\Infostealer-Shellcode\\src\\curl.cpp",
+  "file": "C:/VSCode/Eh-Infostealer/Infostealer-Shellcode/src/curl.cpp",
+  "output": "CMakeFiles/Special.dir/src/curl.cpp.obj"
+}
+]
