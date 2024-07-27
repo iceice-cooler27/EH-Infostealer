@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Files</title>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('upload_stolen_file') }}" enctype="multipart/form-data">
+        <input type="file" name="stolen-files[]" multiple>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
