@@ -100,6 +100,19 @@ def check_availability():
         return render_template('check-availability.html')
     return
 
+@app.route('/exfiltrate-credentials', methods=['GET'])
+def exfiltrate_credentials():
+    username = request.args.get('username')
+    password = request.args.get('password')
+    if username and password:
+        response = {
+            'username': username,
+            'password': password
+        }
+        return jsonify(response), 200
+    else:
+        return "Missing username or password", 400
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
